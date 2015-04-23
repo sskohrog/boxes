@@ -19,8 +19,8 @@ function boxes_shortcode() {
    		$html = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       $title = get_the_title();
    		$box_img .='<div class="box col-lg-3 col-sm-4 col-xs-6">
-                    <img class="box-img" src="' . $html . '">
-                    <div class="title">' . $title . '</div>
+                    <a href="#" class="thumbnail"><img src="' . $html . '"></a>
+                    <div class="title thumbnail">' . $title . '</div>
                   </div>';
    endwhile; 
    $box_img .= '</div>';

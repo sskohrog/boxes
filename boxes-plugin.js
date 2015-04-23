@@ -10,7 +10,16 @@
                 mouseY = e.pageY,
                 x = mouseX - offsetX,
                 y = mouseY - offsetY;
-
+                console.log("GETEDGE");
+                console.log("offset:" + offset);
+                console.log("offsetX:" + offsetX);
+                console.log("offsetY:" + offsetY);
+                console.log("side:" + side);
+                console.log("mouseX:" + mouseX);
+                console.log("mouseY:" + mouseY);
+                console.log("x:" + x);
+                console.log("y:" + y);
+                console.log("target:" + e.target);
             if(x > y) {
                 //top/right
                 if(y > side - x) {
@@ -31,11 +40,32 @@
             }   
         }
         var on = function(e) {
-            var edge = getEdge(e);
-            $(e.target).removeClass("off-".concat(edge)).addClass("on-".concat(edge));
+          var edge = getEdge(e),
+                target = e.target;
+            if(!$(target).is(".box")) {
+                target = target.parents('.box')[0];
+            }
+            $(target).find(".title").removeClass("left").removeClass("right").removeClass("top").removeClass("bottom");
+            $(target).find(".title").addClass(edge).addClass("on");
+            /*$(target).find(".title").removeClass(edge).addClass("on");*/
+
+            console.log("ON");
+            console.log("edge:" + edge);
+            console.log("target:" + target);
+
         },  off = function(e) {
-            var edge = getEdge(e);
-            $(e.target).removeClass("on-".concat(edge)).addClass("off-".concat(edge));
+            var edge = getEdge(e),
+            target = e.target;
+            if(!$(target).is(".box")) {
+                target = target.parents('.box')[0];
+            }
+
+            $(target).find(".title").removeClass("left").removeClass("right").removeClass("top").removeClass("bottom");
+            $(target).find(".title").removeClass("on").addClass(edge);
+
+            console.log("OFF");
+            console.log("edge:" + edge);
+            console.log("target:" + target);
         };
         $( '.box' ).hover(on,off);
     });
