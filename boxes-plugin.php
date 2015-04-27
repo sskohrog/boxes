@@ -20,7 +20,7 @@ function boxes_shortcode() {
       $title = get_the_title();
    		$box_img .='<div class="box col-lg-3 col-sm-4 col-xs-6">
                     <a href="#" class="thumbnail"><img src="' . $html . '"></a>
-                    <div class="title thumbnail">' . $title . '</div>
+                    <div class="title left-slide thumbnail"><p>' . $title . '</p></div>
                   </div>';
    endwhile; 
    $box_img .= '</div>';

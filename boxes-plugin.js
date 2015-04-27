@@ -45,9 +45,9 @@
             if(!$(target).is(".box")) {
                 target = target.parents('.box')[0];
             }
-            $(target).find(".title").removeClass("left").removeClass("right").removeClass("top").removeClass("bottom");
+            $(target).find(".title").removeClass("left-slide").removeClass("right-slide").removeClass("top-slide").removeClass("bottom-slide");
+            $(target).find(".title").removeClass("off-left").removeClass("off-right").removeClass("off-top").removeClass("off-bottom");
             $(target).find(".title").addClass(edge).addClass("on");
-            /*$(target).find(".title").removeClass(edge).addClass("on");*/
 
             console.log("ON");
             console.log("edge:" + edge);
@@ -61,7 +61,7 @@
             }
 
             $(target).find(".title").removeClass("left").removeClass("right").removeClass("top").removeClass("bottom");
-            $(target).find(".title").removeClass("on").addClass(edge);
+            $(target).find(".title").removeClass("on").addClass(edge+"-slide").addClass("off-"+edge);
 
             console.log("OFF");
             console.log("edge:" + edge);
