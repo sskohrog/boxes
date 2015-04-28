@@ -14,13 +14,13 @@ function boxes_shortcode() {
                                            'category_name' => 'box' 
                                             ) 
                                           ); 
-   $box_img = '<div class="row">';
+   $box_img = '<div class="end row">';
    while ( $box_query->have_posts() ) : $box_query->the_post();
    		$html = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       $title = get_the_title();
    		$box_img .='<div class="box col-lg-3 col-sm-4 col-xs-6">
                     <a href="#" class="thumbnail"><img src="' . $html . '"></a>
-                    <div class="title left-slide thumbnail"><p>' . $title . '</p></div>
+                    <div class="title off thumbnail"><p>' . $title . '</p></div>
                   </div>';
    endwhile; 
    $box_img .= '</div>';
