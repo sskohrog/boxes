@@ -56,20 +56,32 @@
         $( '.box' ).hover(on,off);
 
         var clickon = function(e) {
-            target = e.target;
-            if($(target).is(".on")) {
-                $(target).removeClass("on").addClass("eye").addClass("text");
-            }
+            var target = $(e.target).parentsUntil(".end", ".box");
+            console.log("TARGET: " + target);
+
+            $(".box").addClass("click-other-box");
+            $(target).addClass("click-box");
+            $(target).find(".title").removeClass("left").removeClass("right").removeClass("top").removeClass("bottom");
+            $(target).find(".img").addClass("img-off");
+            $(target).find(".title").addClass("eye").removeClass("title").removeClass("thumbnail");
+            $(target).find(".info").removeClass("info-off").addClass("info-box");
+            $(target).find("p").addClass("p-off");
+
         },
             clickoff = function(e) {
-            target = e.target;
-            if($(target).is(".eye")) {
-                $(target).addClass("on").removeClass("eye").removeClass("text");
-            }
+            var target = $(e.target).parentsUntil(".end", ".box");
+            console.log("TARGET: " + target);
+
+            $(".box").removeClass("click-other-box");
+            $(target).removeClass("click-box");
+            $(target).find(".img").removeClass("img-off");
+            $(target).find(".title").removeClass("eye").addClass("title").addClass("thumbnail");
+            $(target).find(".info").addClass("info-off").removeClass("info-box");
+            $(target).find("p").removeClass("p-off");
         };
 
-        $(".on").on("click", clickon); 
-        $(".eye").off("click", clickon); 
+        $(".title").on("click", clickon); 
+        $(".on").off("click", clickoff); 
     });
 })(jQuery);
 
