@@ -54,6 +54,22 @@
 
         };
         $( '.box' ).hover(on,off);
+
+        var clickon = function(e) {
+            target = e.target;
+            if($(target).is(".on")) {
+                $(target).removeClass("on").addClass("eye").addClass("text");
+            }
+        },
+            clickoff = function(e) {
+            target = e.target;
+            if($(target).is(".eye")) {
+                $(target).addClass("on").removeClass("eye").removeClass("text");
+            }
+        };
+
+        $(".on").on("click", clickon); 
+        $(".eye").off("click", clickon); 
     });
 })(jQuery);
 
