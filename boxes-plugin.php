@@ -21,7 +21,7 @@ function boxes_shortcode() {
       $content  = get_the_excerpt();
    		$box_img .='<div class="box col-lg-3 col-sm-4 col-xs-6">
                     <a href="#" class="img thumbnail"><img src="' . $html . '"></a>
-                    <div class="title off thumbnail">
+                    <div class="title-box title off thumbnail">
                       <p>' . $title . '</p>
                     </div>
 
@@ -41,6 +41,10 @@ function boxes_shortcode() {
 add_shortcode('boxes', 'boxes_shortcode');
 add_action('wp_enqueue_scripts', 'boxes_shortcode');
 
+function new_excerpt_more( $more ) {
+  return '</br> <a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read More', 'your-text-domain' ) . '</a>';
+}
+add_filter( 'excerpt_more', 'new_excerpt_more' );
 //CUSTOM POST TYPE FOR Boxes
 function create_posttype() {
   register_post_type( 'boxes',
