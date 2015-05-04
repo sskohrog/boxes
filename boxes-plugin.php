@@ -42,9 +42,10 @@ add_shortcode('boxes', 'boxes_shortcode');
 add_action('wp_enqueue_scripts', 'boxes_shortcode');
 
 function new_excerpt_more( $more ) {
-  return '</br> <a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read More', 'your-text-domain' ) . '</a>';
+  return '</br> <div class="read-button"><a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read More', 'your-text-domain' ) . '</a></div>';
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
+
 //CUSTOM POST TYPE FOR Boxes
 function create_posttype() {
   register_post_type( 'boxes',
